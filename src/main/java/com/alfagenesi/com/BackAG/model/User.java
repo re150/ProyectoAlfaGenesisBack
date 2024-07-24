@@ -1,43 +1,54 @@
 package com.alfagenesi.com.BackAG.model;
 
-public class User {
-    private String name;
-    private int grade;
-    private String Group;
-    private String password;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-    public User() {
-    }
+import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
-    public String getName() {
-        return this.name;
-    }
+@Data // permite crear los get and set de maneautomatica
+@Builder // para construir despues los objetos
+@AllArgsConstructor
+@NoArgsConstructor
+public class User implements UserDetails {
+     @NotNull(message = "El campo password no puede ser nulo")
+     int grade;
+     String group;
+     String name;
+     String email;
+     String password;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+     @Override
+     public Collection<? extends GrantedAuthority> getAuthorities() {
+          return null;
+     }
 
-    public int getGrade() {
-        return this.grade;
-    }
+     @Override
+     public String getUsername() {
+          return getName();
+     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
+     @Override
+     public boolean isAccountNonExpired() {
+          return UserDetails.super.isAccountNonExpired();
+     }
 
-    public String getGroup() {
-        return this.Group;
-    }
+     @Override
+     public boolean isAccountNonLocked() {
+          return UserDetails.super.isAccountNonLocked();
+     }
 
-    public void setGroup(String group) {
-        this.Group = group;
-    }
+     @Override
+     public boolean isCredentialsNonExpired() {
+          return UserDetails.super.isCredentialsNonExpired();
+     }
 
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+     @Override
+     public boolean isEnabled() {
+          return UserDetails.super.isEnabled();
+     }
 }

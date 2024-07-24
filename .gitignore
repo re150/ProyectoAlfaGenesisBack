@@ -33,3 +33,4 @@ build/
 .vscode/
 
 servicesAccounKey.json
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
