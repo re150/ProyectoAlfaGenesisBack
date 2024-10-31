@@ -3,6 +3,7 @@ COPY  . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-slim
+COPY servicesAccounKey.json  /target/servicesAccounKey.json
 COPY --from=build /target/BackAG-0.0.1-SNAPSHOT.jar BackAG.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "BackAG.jar"]
