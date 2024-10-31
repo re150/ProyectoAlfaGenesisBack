@@ -10,6 +10,6 @@ COPY --from=build /target/BackAG-0.0.1-SNAPSHOT.jar BackAG.jar
 
 EXPOSE 8080
 
-ENV GOOGLE_APPLICATION_CREDENTIALS=/target/servicesAccounKey.json
+ENV GOOGLE_APPLICATION_CREDENTIALS=/servicesAccounKey.json
 
 ENTRYPOINT ["java", "-jar", "BackAG.jar"]
