@@ -1,8 +1,7 @@
 FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
-
-COPY  servicesAccounKey.json /app
+COPY servicesAccounKey.json /app
 
 COPY mvnw ./
 COPY .mvn .mvn
