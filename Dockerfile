@@ -15,6 +15,6 @@ RUN ./mvnw package -DskipTests
 
 EXPOSE 8080
 
-ENV GOOGLE_APPLICATION_CREDENTIALS="/app/servicesAccounKey.json"
+ENV GOOGLE_APPLICATION_CREDENTIALS="servicesAccounKey.json"
 
 CMD ["java", "-jar", "target/mi-aplicacion.jar"]
