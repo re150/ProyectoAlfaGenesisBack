@@ -1,16 +1,21 @@
-FROM maven:3.9.6-openjdk-17 AS build
+FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-COPY . /app
+COPY  servicesAccounKey.json /app
 
-RUN mvn clean package
+COPY mvnw ./
+COPY .mvn .mvn
+COPY pom.xml .
 
-# Crear una nueva imagen basada en OpenJDK 17
-FROM openjdk:17-jre-slim-buster
+RUN ./mvnw dependency:resolve
+
+COPY src ./src
+
+RUN ./mvnw package -DskipTests
 
 EXPOSE 8080
 
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.jar /app/demo-0.0.1-SNAPSHOT.jar
+ENV GOOGLE_APPLICATION_CREDENTIALS="/app/servicesAccounKey.json"
 
-ENTRYPOINT ["java", "-jar", "/app/demo-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/mi-aplicacion.jar"]
