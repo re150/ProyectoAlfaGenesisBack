@@ -3,6 +3,6 @@ COPY  . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17-jdk-slim
-COPY --from=build /target/proyectoalfagenesisback-0.0.1-SNAPSHOT.jar proyectoalfagenesisback.jar
+COPY --from=build /target/BackAG-0.0.1-SNAPSHOT.jar BackAG.jar
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "proyectoalfagenesisback.jar"]
+ENTRYPOINT ["java", "-jar", "BackAG.jar"]
