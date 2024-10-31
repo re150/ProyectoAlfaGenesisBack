@@ -1,43 +1,23 @@
 package com.alfagenesi.com.BackAG.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.validation.constraints.NotNull;
+import java.util.Collection;
+
+@Data // permite crear los get and set de maneautomatica
+@Builder // para construir despues los objetos
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
-    private String name;
-    private int grade;
-    private String Group;
-    private String password;
-
-    public User() {
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getGrade() {
-        return this.grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
-    public String getGroup() {
-        return this.Group;
-    }
-
-    public void setGroup(String group) {
-        this.Group = group;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+     @NotNull(message = "El campo password no puede ser nulo")
+     String id;
+     String email;
+     Long noProfile;
+     //Role role;
 }

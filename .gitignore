@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-
+.env
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -33,3 +33,6 @@ build/
 .vscode/
 
 servicesAccounKey.json
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+/env.properties
+env.properties
